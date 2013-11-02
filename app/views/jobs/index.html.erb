@@ -1,0 +1,22 @@
+<h1>Listing jobs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+
+<% @jobs.each do |job| %>
+  <tr>
+    <td><%= job.name %></td>
+    <td><%= job.completed? ? "Completed" : "Started" %></td>
+    <% unless job.completed? %>
+      <td><%= link_to "Complete", "/jobs/complete/#{job.id}" %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Job', new_job_path %>
